@@ -131,7 +131,7 @@
   "visual_rules": [
     "Core palette values are approved exactly as recorded in DN-DEC-006; do not approximate or substitute them.",
     "Not every application must use every core palette color.",
-    "Dark Brown on Warm Ivory is documented at 15.71:1; Warm Gray on Warm Ivory at 4.31:1; Muted Teal on Warm Ivory at 2.7:1; Warm Orange on Warm Ivory at 3.20:1.",
+    "Dark Brown on Warm Ivory is documented at 15.71:1; Warm Gray on Warm Ivory is 4.31:1 and fails WCAG AA for normal-sized text (use only for large text on that background); Muted Teal on Warm Ivory is 2.7:1; Warm Orange on Warm Ivory is 3.20:1.",
     "Do not use Muted Teal or Warm Orange as normal-sized text on Warm Ivory based on the documented contrast results; validate every actual foreground/background pairing before release.",
     "The official Arabic name is ديجيتال نواة."
   ],
