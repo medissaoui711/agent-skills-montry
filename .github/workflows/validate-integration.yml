@@ -55,4 +55,11 @@ jobs:
       - name: Validate plugin and all skill entrypoints
         run: claude plugin validate . --strict
       - name: Load plugin and inspect component inventory
-        run: claude --plugin-dir . plugin details montry
+        shell: bash
+        run: |
+          set -o pipefail
+          claude --plugin-dir . plugin details montry | tee /tmp/montry-plugin-details.txt
+          grep -Fq 'Skills (7)' /tmp/montry-plugin-details.txt
+          for skill in montry brand-digitalnawa hook-analyzer cut-editor motion-builder qc-checker remotion-engine; do
+            grep -Fq "$skill" /tmp/montry-plugin-details.txt
+          done
