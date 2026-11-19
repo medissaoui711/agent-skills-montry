@@ -1,0 +1,65 @@
+name: Integration verification
+
+on:
+  pull_request:
+    paths:
+      - "contracts/**"
+      - "scripts/**"
+      - "tests/**"
+      - "skills/**"
+      - ".claude-plugin/**"
+      - ".github/workflows/validate-integration.yml"
+  push:
+    branches:
+      - main
+      - "feat/digitalnawa-studio-integration"
+    paths:
+      - "contracts/**"
+      - "scripts/**"
+      - "tests/**"
+      - "skills/**"
+      - ".claude-plugin/**"
+      - ".github/workflows/validate-integration.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  artifact-integration:
+    name: Artifact-chain integration tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python scripts/validate_contracts.py
+      - run: python scripts/validate_plugin.py
+      - run: python scripts/validate_workflow.py
+      - run: python -m unittest discover -s tests -v
+
+  claude-code-plugin:
+    name: Claude Code native plugin validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Claude Code CLI
+        run: npm install --global @anthropic-ai/claude-code@latest
+      - name: Report CLI version
+        run: claude --version
+      - name: Validate plugin and all skill entrypoints
+        run: claude plugin validate . --strict
+      - name: Load plugin and inspect component inventory
+        shell: bash
+        run: |
+          set -o pipefail
+          claude --plugin-dir . plugin details montry | tee /tmp/montry-plugin-details.txt
+          grep -Fq 'Skills (7)' /tmp/montry-plugin-details.txt
+          for skill in montry brand-digitalnawa hook-analyzer cut-editor motion-builder qc-checker remotion-engine; do
+            grep -Fq "$skill" /tmp/montry-plugin-details.txt
+          done

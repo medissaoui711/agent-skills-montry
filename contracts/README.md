@@ -30,10 +30,11 @@ Run:
 python -m pip install -r requirements-dev.txt
 python scripts/validate_contracts.py
 python scripts/validate_plugin.py
+python scripts/validate_workflow.py
 python -m unittest discover -s tests -v
 ```
 
-The contract validator checks all schema documents and validates the checked-in Brand Contract instance. Unit tests cover schema validity, Brand Contract gates, unknown properties, invalid color values, and selected cross-field invariants.
+The contract validator checks all schema documents and validates the checked-in Brand Contract instance. The workflow validator checks six synthetic artifacts across the full artifact chain. Unit tests cover schema validity, Brand Contract gates, unknown properties, invalid color values, cross-artifact references, dependency cycles, and delivery/QC gates. Synthetic fixtures use example.invalid URLs and are not real media or customer deliverables.
 
 ## Semantic invariants
 
@@ -41,6 +42,10 @@ Some constraints span multiple fields or artifacts and cannot be expressed clear
 - QC PASS requires evidence for every passing check and every check must pass.
 - EDL segments must reference known source media, have a positive frame range, and remain within source duration.
 - Production scenes must fit within the composition duration and have unique IDs.
+
+## Cross-artifact integration
+
+The workflow validator resolves each source artifact by ID, contract slug, and exact version. It enforces approved upstream artifacts, Story Plan and Production Plan dependencies, optional EDL consumption, QC review of the current Production Plan, and QC PASS before a delivery can be READY. A referenced Brand Contract must have approval_status APPROVED before branded production can proceed.
 
 ## Brand gate
 

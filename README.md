@@ -72,8 +72,18 @@ Copy-Item -Path ".\skills\*" -Destination $target -Recurse -Force
 python -m pip install -r requirements-dev.txt
 python scripts/validate_contracts.py
 python scripts/validate_plugin.py
+python scripts/validate_workflow.py
 python -m unittest discover -s tests -v
 ```
+
+التحقق الأصلي من Plugin عبر Claude Code:
+
+```bash
+claude plugin validate . --strict
+claude --plugin-dir . plugin details montry
+```
+
+اختبار التكامل يستخدم بيانات اصطناعية فقط. راجع [Integration Verification](docs/testing/integration-verification.md) وحالة بوابة Remotion قبل تشغيل أي معاينة فعلية.
 
 ## حدود الضمان
 

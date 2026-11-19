@@ -1,0 +1,37 @@
+{
+  "contract_version": "1.0.0",
+  "project_id": "integration-fixture-project",
+  "artifact_id": "delivery-001",
+  "created_at": "2026-11-19T08:05:00Z",
+  "producer": "delivery",
+  "status": "approved",
+  "source_artifacts": [
+    {
+      "artifact_id": "qc-001",
+      "contract": "qc-report",
+      "version": "1.0.0"
+    }
+  ],
+  "validation": {
+    "status": "PASS",
+    "issues": []
+  },
+  "deliverables": [
+    {
+      "deliverable_id": "fixture-output",
+      "uri": "https://example.invalid/test-fixture.mp4",
+      "media_type": "video/mp4",
+      "size_bytes": 1,
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "duration_frames": 30
+    }
+  ],
+  "qc_report_reference": "qc-001",
+  "delivery_status": "READY",
+  "notes": [
+    "Synthetic CI fixture only. This URI is not a real video."
+  ]
+}

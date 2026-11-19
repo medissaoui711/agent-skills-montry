@@ -1,0 +1,40 @@
+{
+  "contract_version": "1.0.0",
+  "project_id": "integration-fixture-project",
+  "artifact_id": "qc-001",
+  "created_at": "2026-11-19T08:04:00Z",
+  "producer": "qc-checker",
+  "status": "approved",
+  "source_artifacts": [
+    {
+      "artifact_id": "production-001",
+      "contract": "production-plan",
+      "version": "1.0.0"
+    }
+  ],
+  "validation": {
+    "status": "PASS",
+    "issues": []
+  },
+  "overall_status": "PASS",
+  "reviewed_artifacts": [
+    {
+      "artifact_id": "production-001",
+      "contract": "production-plan",
+      "version": "1.0.0"
+    }
+  ],
+  "checks": [
+    {
+      "check_id": "schema-fixture",
+      "category": "integration",
+      "status": "PASS",
+      "evidence": [
+        "https://example.invalid/evidence/schema-fixture.txt"
+      ],
+      "reason": "Synthetic test evidence only.",
+      "severity": "info"
+    }
+  ],
+  "recommendations": []
+}
