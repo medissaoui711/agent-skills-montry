@@ -56,6 +56,16 @@ class ContractSchemaTests(unittest.TestCase):
         errors = list(Draft202012Validator(schema).iter_errors(instance))
         self.assertTrue(errors)
 
+    def test_remotion_engine_reference_links_resolve(self):
+        import re
+
+        skill_path = ROOT / "skills/remotion-engine/SKILL.md"
+        content = skill_path.read_text(encoding="utf-8")
+        references = re.findall(r"\\]\((references/[^)]+)\\)", content)
+        self.assertGreater(len(references), 0)
+        for reference in references:
+            self.assertTrue((skill_path.parent / reference).is_file(), reference)
+
 
 class SemanticValidationTests(unittest.TestCase):
     def test_qc_pass_requires_evidence(self):
