@@ -1,0 +1,16 @@
+{
+  "name": "montry",
+  "description": "DigitalNawa Studio - Complete video production system: brand, hooks, cutting, motion building and QC. v1.1 with Kinetic Rules.",
+  "version": "1.1.0",
+  "author": {
+    "name": "DigitalNawa"
+  },
+  "skills": [
+    "./skills/montry",
+    "./skills/brand-digitalnawa",
+    "./skills/hook-analyzer",
+    "./skills/cut-editor",
+    "./skills/motion-builder",
+    "./skills/qc-checker"
+  ]
+}
