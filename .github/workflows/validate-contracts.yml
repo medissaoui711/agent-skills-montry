@@ -3,6 +3,8 @@ name: Validate contracts and plugin
 on:
   pull_request:
     paths:
+      - "README.md"
+      - "docs/**"
       - "contracts/**"
       - "shared/brand/**"
       - "skills/**"
