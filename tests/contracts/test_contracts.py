@@ -61,7 +61,7 @@ class ContractSchemaTests(unittest.TestCase):
 
         skill_path = ROOT / "skills/remotion-engine/SKILL.md"
         content = skill_path.read_text(encoding="utf-8")
-        references = re.findall(r"\\]\((references/[^)]+)\\)", content)
+        references = re.findall(r"\]\((references/[^)]+)\)", content)
         self.assertGreater(len(references), 0)
         for reference in references:
             self.assertTrue((skill_path.parent / reference).is_file(), reference)
