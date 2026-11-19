@@ -1,0 +1,253 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://digitalnawa.dev/schemas/edit-decision-list.schema.json",
+  "title": "DigitalNawa Edit Decision List",
+  "type": "object",
+  "$defs": {
+    "base": {
+      "type": "object",
+      "properties": {
+        "contract_version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "project_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "producer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "in_review",
+            "approved",
+            "rejected",
+            "superseded"
+          ]
+        },
+        "source_artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "artifact_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "contract": {
+                "type": "string",
+                "minLength": 1
+              },
+              "version": {
+                "type": "string",
+                "pattern": "^\\d+\\.\\d+\\.\\d+$"
+              }
+            },
+            "required": [
+              "artifact_id",
+              "contract",
+              "version"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "validation": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "PASS",
+                "FAIL",
+                "NOT_VERIFIED",
+                "BLOCKED"
+              ]
+            },
+            "issues": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string"
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "severity": {
+                    "type": "string",
+                    "enum": [
+                      "error",
+                      "warning",
+                      "info"
+                    ]
+                  }
+                },
+                "required": [
+                  "code",
+                  "message",
+                  "severity"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "status",
+            "issues"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "contract_version",
+        "project_id",
+        "artifact_id",
+        "created_at",
+        "producer",
+        "status",
+        "source_artifacts",
+        "validation"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "#/$defs/base"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "timebase": {
+          "type": "object",
+          "properties": {
+            "fps": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "unit": {
+              "type": "string",
+              "enum": [
+                "frames",
+                "milliseconds"
+              ]
+            }
+          },
+          "required": [
+            "fps",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        "source_media": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "media_id": {
+                "type": "string"
+              },
+              "uri": {
+                "type": "string",
+                "format": "uri"
+              },
+              "duration_frames": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "transcript_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "media_id",
+              "uri",
+              "duration_frames",
+              "transcript_ref"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "segments": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "segment_id": {
+                "type": "string"
+              },
+              "media_id": {
+                "type": "string"
+              },
+              "in_frame": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "out_frame": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "timeline_start_frame": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "reason": {
+                "type": "string"
+              },
+              "audio_decision": {
+                "type": "string"
+              },
+              "transition": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "segment_id",
+              "media_id",
+              "in_frame",
+              "out_frame",
+              "timeline_start_frame",
+              "reason",
+              "audio_decision",
+              "transition"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "timebase",
+        "source_media",
+        "segments",
+        "notes"
+      ]
+    }
+  ],
+  "unevaluatedProperties": false
+}
