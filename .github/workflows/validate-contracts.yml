@@ -16,6 +16,8 @@ on:
   push:
     branches: [main]
     paths:
+      - "README.md"
+      - "docs/**"
       - "contracts/**"
       - "shared/brand/**"
       - "skills/**"
