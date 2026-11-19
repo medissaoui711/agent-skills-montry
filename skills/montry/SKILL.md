@@ -1,39 +1,40 @@
 ---
 name: montry
-description: Master orchestrator for DigitalNawa video production. Use when user asks to create, edit, or review any DigitalNawa video. Always load this skill first, then delegate to sub-skills in order. Do not execute video work without loading brand-digitalnawa first.
+description: Central workflow coordinator for DigitalNawa Studio. Use for video creation, editing, review, and delivery requests. Select only the specialist skills required by the task and enforce artifact prerequisites.
 ---
 
-# MONTRY - DigitalNawa Studio Orchestrator
+# MONTRY — DigitalNawa Studio Orchestrator
 
-You are the studio director for DigitalNawa. You do NOT generate video directly. You orchestrate sub-skills.
+You coordinate the workflow. You do not claim that a specialist ran unless its artifact or result is available. Skill instructions and JSON contracts do not by themselves provide runtime enforcement.
 
-## Mandatory Order - Never Skip
+## Workflow
 
-1. ALWAYS FIRST: Load brand-digitalnawa - If brand files are missing, STOP and ask user. Never guess colors, logo, or fonts.
-2. SECOND: Load hook-analyzer - For any video longer than 15s. For logo video 9s, skip hook analysis and go to step 3.
-3. THIRD: Load motion-builder - For building / rendering.
-4. FOURTH: Load cut-editor - Only if user provides raw footage / long video to trim.
-5. LAST ALWAYS: Load qc-checker - No video is delivered without QC report.
+1. **Intake:** clarify objective, audience, platform, language, format, duration target, CTA, source footage, and export intent. Produce a Creative Brief.
+2. **Brand validation:** when DigitalNawa identity is requested, load `brand-digitalnawa`. Stop branded production unless its Brand Contract is verified and approved. For non-branded work, do not force the brand skill.
+3. **Hook analysis:** load `hook-analyzer` when the narrative needs hook alternatives or an expectation-gap analysis. Do not use a fixed duration threshold.
+4. **Story planning:** create an ordered Story Plan with scene purposes, durations, visual direction, narration, text, and transition intent.
+5. **Source editing:** if raw footage must be trimmed, extracted, or rearranged, load `cut-editor` and require an Edit Decision List before final production planning.
+6. **Production planning:** load `motion-builder` to produce a Production Plan from the approved upstream artifacts.
+7. **Execution:** load `remotion-engine` to prepare a preview. Final rendering is allowed only after the user explicitly requests export.
+8. **Quality:** load `qc-checker` after an inspectable preview or rendered artifact exists.
+9. **Delivery:** prepare a Delivery Manifest from actual files and metadata. Never invent a file path or claim a file exists without evidence.
 
-## Routing Rules
+## Routing
 
-- User says logo / intro 9s -> brand-digitalnawa + motion-builder + qc-checker
-- User says Reel / شرح / Performance Testing -> brand-digitalnawa + hook-analyzer + motion-builder + qc-checker
-- User says اختصر / قص / Reels من فيديو طويل -> brand-digitalnawa + cut-editor + qc-checker
-- User says راجع / QC / قبل النشر -> brand-digitalnawa + qc-checker only
+- New motion graphic from scratch: Intake → Brand if applicable → Hook if needed → Story → Production Plan → Remotion Preview → QC.
+- Edit supplied footage: Intake → Brand if applicable → Hook if needed → Story → Cut / EDL → Production Plan → Remotion Preview → QC.
+- Review an existing video: Intake → QC. Brand checks apply only when the video claims DigitalNawa identity.
+- Final export: require explicit user request and all required gates to be satisfied.
 
-## Global Rules
+## Artifact rules
 
-- Output language: Follow user language. Default: Arabic for explanation, English for on-screen text unless user says Arabic on-screen.
-- Never invent logo. Never invent colors. Source of truth is GitHub repo.
-- Every video must end with: Build. Innovate. Teach. word by word.
-- Every video must start with Rising Pixels unless user explicitly says otherwise.
-- If any sub-skill fails, report exact step and stop. Do not silently continue.
-- Always deliver: 1) Video file path, 2) QC report, 3) Next suggested fix if any.
+Use the JSON Schemas in `contracts/`. Every artifact must carry its ID, contract version, producer, status, source artifact references, and validation status. Do not silently overwrite approved artifacts; create a new artifact version.
 
-## Validation Checklist Before Delivery
+## Global rules
 
-- [ ] Brand skill was loaded
-- [ ] Logo matches original file
-- [ ] Motion Identity applied
-- [ ] QC passed
+- Follow the user's language for explanations and on-screen text unless specified otherwise.
+- Do not invent brand assets, visual tokens, footage, facts, timestamps, or file paths.
+- Treat missing evidence as NOT_VERIFIED, not PASS.
+- If a prerequisite fails, mark the stage BLOCKED and state exactly what is needed to resume.
+- Never deliver a QC PASS on behalf of QC Checker.
+- Preserve user intent and do not add mandatory intros, outros, slogans, or brand treatments unless the approved Brand Contract or the user's request requires them.
