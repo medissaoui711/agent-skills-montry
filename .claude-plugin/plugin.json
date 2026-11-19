@@ -1,7 +1,7 @@
 {
   "name": "montry",
-  "description": "DigitalNawa Studio - Complete video production system: brand, hooks, cutting, motion building and QC. v1.1 with Kinetic Rules.",
-  "version": "1.1.0",
+  "description": "DigitalNawa Studio v1.2 - Repo is source of truth + Kinetic Rules. Brand, hooks, cutting, motion, QC.",
+  "version": "1.2.0",
   "author": {
     "name": "DigitalNawa"
   },

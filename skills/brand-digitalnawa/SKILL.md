@@ -5,6 +5,14 @@ description: DigitalNawa brand source of truth. Use FIRST for any DigitalNawa vi
 
 # Brand - DigitalNawa
 
+## 0. REPO - مصدر الحقيقة الوحيد - اقرأه قبل أي شيء
+
+- Repo URL: https://github.com/medissaoui711/DigitalNawa-Brand-Project
+- ممنوع تخمين أي لون أو شعار أو خط. إذا لم تجده في المستودع، توقف واسأل المستخدم.
+- Logo source ONLY: DigitalNawa/03-Logo-Assets في المستودع.
+- Background المعتمد لهذه السلسلة (Logo + Reels): #FEF3C7 (من المستودع - Light)
+- Background الداكن #050810 يستعمل فقط إذا طلب المستخدم صراحة نسخة داكنة. لا تستعمله افتراضيا.
+
 ## 1. Source of Truth (Do Not Guess)
 
 - Repo: https://github.com/medissaoui711/DigitalNawa-Brand-Project
@@ -57,6 +65,10 @@ Sequence for EVERY video:
 
 
 ---
+
+## KINETIC RULES - اقرأ المستودع أولا
+
+- قبل أن تبني أي فيديو، افتح المستودع https://github.com/medissaoui711/DigitalNawa-Brand-Project وتأكد من الشعار والألوان والخطوط منه، وليس من ذاكرتك.
 
 ## KINETIC RULES - إجباري لكل فيديو
 
