@@ -13,13 +13,26 @@ description: DigitalNawa brand source of truth. Use FIRST for any DigitalNawa vi
 - Background المعتمد لهذه السلسلة (Logo + Reels): #FEF3C7 (من المستودع - Light)
 - Background الداكن #050810 يستعمل فقط إذا طلب المستخدم صراحة نسخة داكنة. لا تستعمله افتراضيا.
 
+
+## 0.1 CORRECTION - الاسم العربي الرسمي - لا تغيره أبدا
+
+- الاسم العربي الصحيح: ديجيتال نواة
+- التهجئة حرفا حرفا: د - ي - ج - ي - ت - ا - ل - ن - و - ا - ة
+- ممنوع كتابة "ديجيتال نوى" بدون تاء مربوطة. "نوى" خطأ.
+- الاسم الإنجليزي: DigitalNawa
+- إذا رأيت "نوى" في أي مكان في السكيل، اعتبرها خطأ وصححها إلى "نواة".
+
 ## 1. Source of Truth (Do Not Guess)
 
 - Repo: https://github.com/medissaoui711/DigitalNawa-Brand-Project
 - Logo source ONLY: DigitalNawa/03-Logo-Assets
 - If logo file is not found in repo, STOP and ask user to upload logo PNG/SVG. Do NOT generate a similar logo with AI.
 
-## 2. Visual Identity
+## 2. Visual Identity - DEPRECATED - لا تستعمله. استعمل القسم 0 فقط.
+
+> هذا القسم قديم وملغي. القسم 0 + المستودع هو المرجع الوحيد. لا تستعمل #050810 ولا #00FF9D ولا #FFC800 ولا Space Grotesk لهذه السلسلة.
+
+## 2. Visual Identity (OLD - DO NOT USE)
 
 - Background: #050810 (dark blue-black)
 - Grid: Subtle dot grid, opacity 8%
@@ -42,7 +55,7 @@ description: DigitalNawa brand source of truth. Use FIRST for any DigitalNawa vi
 Sequence for EVERY video:
 1. START: Rising Pixels - 24 pixels rise from bottom, Stagger 0.04s, Opacity 0 -> 100%
 2. ASSEMBLY: Pixels assemble into original logo
-3. REVEAL: ديجيتال نوى -> morph to DigitalNawa (same weight, smooth)
+3. REVEAL: ديجيتال نواة -> morph to DigitalNawa (same weight, smooth)
 4. END: Slogan lockup Build. -> Innovate. -> Teach. word by word, Scale 95% -> 100% each word, Hold 0.8s, Fade Out
 
 ## 4. Logo Video Spec (Pilot 9s)
@@ -59,7 +72,7 @@ Sequence for EVERY video:
 
 ## 5. Failure Rules
 
-- If Arabic text ديجيتال نوى is distorted, REJECT and fix font. Arabic letters must be perfect.
+- If Arabic text ديجيتال نواة is distorted, REJECT and fix font. Arabic letters must be perfect.
 - If logo differs from repo file by even 1%, REJECT.
 - If colors differ, REJECT and re-read repo.
 
