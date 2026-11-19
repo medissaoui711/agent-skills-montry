@@ -46,7 +46,7 @@ The visual-system foundation reports these ratios:
 - Muted Teal on Warm Ivory: 2.7:1.
 - Warm Orange on Warm Ivory: 3.20:1.
 
-The same source notes that teal and orange are accents, not normal-sized text on Warm Ivory. Actual combinations still require per-use validation.
+The same source notes that Warm Gray also fails AA for normal-sized text on Warm Ivory (large text only), while teal and orange are accents rather than text colors on that background. Actual combinations still require per-use validation.
 
 ## Current contract status
 
