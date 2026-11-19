@@ -197,13 +197,23 @@
               },
               "usage": {
                 "type": "string"
+              },
+              "approval_status": {
+                "type": "string",
+                "enum": [
+                  "APPROVED",
+                  "PROVISIONAL",
+                  "UNVERIFIED",
+                  "REJECTED"
+                ]
               }
             },
             "required": [
               "asset_id",
               "uri",
               "format",
-              "usage"
+              "usage",
+              "approval_status"
             ],
             "additionalProperties": false
           }
@@ -222,12 +232,22 @@
               },
               "source_ref": {
                 "type": "string"
+              },
+              "approval_status": {
+                "type": "string",
+                "enum": [
+                  "APPROVED",
+                  "PROVISIONAL",
+                  "UNVERIFIED",
+                  "REJECTED"
+                ]
               }
             },
             "required": [
               "token",
               "value",
-              "source_ref"
+              "source_ref",
+              "approval_status"
             ],
             "additionalProperties": false
           }
@@ -251,12 +271,31 @@
               },
               "license_ref": {
                 "type": "string"
+              },
+              "approval_status": {
+                "type": "string",
+                "enum": [
+                  "APPROVED",
+                  "PROVISIONAL",
+                  "UNVERIFIED",
+                  "REJECTED"
+                ]
+              },
+              "license_status": {
+                "type": "string",
+                "enum": [
+                  "verified",
+                  "unverified",
+                  "not_required"
+                ]
               }
             },
             "required": [
               "role",
               "family",
-              "source_ref"
+              "source_ref",
+              "approval_status",
+              "license_status"
             ],
             "additionalProperties": false
           }

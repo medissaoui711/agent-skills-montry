@@ -1,0 +1,156 @@
+{
+  "contract_version": "1.0.0",
+  "project_id": "digitalnawa-studio",
+  "artifact_id": "brand-digitalnawa-2026-11-19-001",
+  "created_at": "2026-11-19T03:34:29.870Z",
+  "producer": "brand-digitalnawa",
+  "status": "in_review",
+  "source_artifacts": [],
+  "validation": {
+    "status": "NOT_VERIFIED",
+    "issues": [
+      {
+        "code": "LOGO_GEOMETRY_UNVERIFIED",
+        "message": "Master SVG is documented as a geometric reconstruction; exact fidelity and final lockup approval are not established.",
+        "severity": "warning"
+      },
+      {
+        "code": "TYPOGRAPHY_PROVISIONAL",
+        "message": "English, Arabic, and technical font selections remain provisional; no font files or verified licensing evidence are present.",
+        "severity": "warning"
+      },
+      {
+        "code": "MANIFEST_DRAFT",
+        "message": "The official asset manifest remains draft and final asset-package acceptance is not verified.",
+        "severity": "warning"
+      }
+    ]
+  },
+  "brand_id": "digitalnawa",
+  "brand_name": "DigitalNawa",
+  "identity_version": "0.1.0",
+  "source_of_truth": {
+    "repository_url": "https://github.com/medissaoui711/DigitalNawa-Brand-Project",
+    "ref": "main@bf2d22c54048a72ce87579e29d1fc4e6c50fab05",
+    "asset_index_path": "DigitalNawa/03-Logo-Assets/08-Manifest/asset-manifest.json"
+  },
+  "approval_status": "PENDING",
+  "logo_assets": [
+    {
+      "asset_id": "dn-symbol-master",
+      "uri": "https://raw.githubusercontent.com/medissaoui711/DigitalNawa-Brand-Project/main/DigitalNawa/03-Logo-Assets/02-Master/dn-symbol-master.svg",
+      "format": "svg",
+      "usage": "Candidate symbol master; geometric reconstruction, not final-approved artwork.",
+      "approval_status": "UNVERIFIED"
+    },
+    {
+      "asset_id": "digitalnawa-horizontal-ar-master",
+      "uri": "https://raw.githubusercontent.com/medissaoui711/DigitalNawa-Brand-Project/main/DigitalNawa/03-Logo-Assets/02-Master/digitalnawa-horizontal-ar-master.svg",
+      "format": "svg",
+      "usage": "Candidate Arabic horizontal master; final lockup and geometry not approved.",
+      "approval_status": "UNVERIFIED"
+    },
+    {
+      "asset_id": "digitalnawa-horizontal-en-master",
+      "uri": "https://raw.githubusercontent.com/medissaoui711/DigitalNawa-Brand-Project/main/DigitalNawa/03-Logo-Assets/02-Master/digitalnawa-horizontal-en-master.svg",
+      "format": "svg",
+      "usage": "Candidate English horizontal master; final lockup and geometry not approved.",
+      "approval_status": "UNVERIFIED"
+    }
+  ],
+  "color_palette": [
+    {
+      "token": "warmIvory",
+      "value": "#FEF3C7",
+      "source_ref": "DN-DEC-006; OWNER-DECISION-REGISTER.md (FINAL-QA-CONTINUATION-003)",
+      "approval_status": "APPROVED"
+    },
+    {
+      "token": "warmGray",
+      "value": "#78716C",
+      "source_ref": "DN-DEC-006; OWNER-DECISION-REGISTER.md (FINAL-QA-CONTINUATION-003)",
+      "approval_status": "APPROVED"
+    },
+    {
+      "token": "mutedTeal",
+      "value": "#0EA5A4",
+      "source_ref": "DN-DEC-006; OWNER-DECISION-REGISTER.md (FINAL-QA-CONTINUATION-003)",
+      "approval_status": "APPROVED"
+    },
+    {
+      "token": "darkBrown",
+      "value": "#1C1917",
+      "source_ref": "DN-DEC-006; OWNER-DECISION-REGISTER.md (FINAL-QA-CONTINUATION-003)",
+      "approval_status": "APPROVED"
+    },
+    {
+      "token": "warmOrange",
+      "value": "#EA5808",
+      "source_ref": "DN-DEC-006; OWNER-DECISION-REGISTER.md (FINAL-QA-CONTINUATION-003)",
+      "approval_status": "APPROVED"
+    }
+  ],
+  "typography": [
+    {
+      "role": "english",
+      "family": "Inter",
+      "weight": "not-final",
+      "source_ref": "DN-DEC-007; visual-system-foundation.md",
+      "license_ref": "Font files and license evidence not present in inspected repository.",
+      "approval_status": "PROVISIONAL",
+      "license_status": "unverified"
+    },
+    {
+      "role": "arabic",
+      "family": "Cairo",
+      "weight": "not-final",
+      "source_ref": "DN-DEC-007; visual-system-foundation.md",
+      "license_ref": "Font files and license evidence not present in inspected repository.",
+      "approval_status": "PROVISIONAL",
+      "license_status": "unverified"
+    },
+    {
+      "role": "arabic-alternative",
+      "family": "IBM Plex Sans Arabic",
+      "weight": "not-final",
+      "source_ref": "OWNER-DECISION-REGISTER.md (FINAL-QA-CONTINUATION-003)",
+      "license_ref": "Font files and license evidence not present in inspected repository.",
+      "approval_status": "PROVISIONAL",
+      "license_status": "unverified"
+    },
+    {
+      "role": "technical",
+      "family": "JetBrains Mono",
+      "weight": "not-final",
+      "source_ref": "DN-DEC-007; visual-system-foundation.md",
+      "license_ref": "Font files and license evidence not present in inspected repository.",
+      "approval_status": "PROVISIONAL",
+      "license_status": "unverified"
+    }
+  ],
+  "visual_rules": [
+    "Core palette values are approved exactly as recorded in DN-DEC-006; do not approximate or substitute them.",
+    "Not every application must use every core palette color.",
+    "Dark Brown on Warm Ivory is documented at 15.71:1; Warm Gray on Warm Ivory at 4.31:1; Muted Teal on Warm Ivory at 2.7:1; Warm Orange on Warm Ivory at 3.20:1.",
+    "Do not use Muted Teal or Warm Orange as normal-sized text on Warm Ivory based on the documented contrast results; validate every actual foreground/background pairing before release.",
+    "The official Arabic name is ديجيتال نواة."
+  ],
+  "motion_rules": [
+    "The approved symbol concept includes an interlocked D/N monogram with rising pixels.",
+    "No mandatory per-video motion sequence, timing, easing, or intro animation has been verified as approved."
+  ],
+  "intro_rules": [],
+  "outro_rules": [
+    "The approved official tagline is Build. Innovate. Teach.",
+    "The tagline is not a mandatory outro for every video; apply it when the requested content and approved brand context call for a brand signature."
+  ],
+  "allowed_variations": [],
+  "exceptions": [
+    "The original logo reference image is absent; exact geometric fidelity is NOT VERIFIED.",
+    "No final logo lockup or bilingual hierarchy has been selected.",
+    "Typography and font licensing/embedding remain provisional and require owner decisions.",
+    "The official asset manifest remains draft; final package acceptance is NOT VERIFIED.",
+    "Functional Success/Warning/Error/Info colors and focus treatment remain owner decisions.",
+    "The central governance register itself is marked DRAFT FOR OWNER APPROVAL; do not overstate its formal register-level approval status."
+  ]
+}
