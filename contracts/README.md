@@ -24,8 +24,24 @@ Every artifact includes `contract_version`, `project_id`, `artifact_id`, `create
 
 ## Validation
 
-Run `python scripts/validate_contracts.py`. The validator requires the pinned development dependency in `requirements-dev.txt`. Contract schemas are structural contracts; domain-level invariants such as EDL frame ranges and total scene duration also require semantic tests before production use.
+Run:
+
+```bash
+python -m pip install -r requirements-dev.txt
+python scripts/validate_contracts.py
+python scripts/validate_plugin.py
+python -m unittest discover -s tests -v
+```
+
+The contract validator checks all schema documents and validates the checked-in Brand Contract instance. Unit tests cover schema validity, Brand Contract gates, unknown properties, invalid color values, and selected cross-field invariants.
+
+## Semantic invariants
+
+Some constraints span multiple fields or artifacts and cannot be expressed clearly in the current schemas. `scripts/semantic_validation.py` checks:
+- QC PASS requires evidence for every passing check and every check must pass.
+- EDL segments must reference known source media, have a positive frame range, and remain within source duration.
+- Production scenes must fit within the composition duration and have unique IDs.
 
 ## Brand gate
 
-A schema-valid Brand Contract is not automatically approved. Production requiring DigitalNawa branding must stop unless `approval_status` is APPROVED and all referenced assets have been verified against the official source.
+A schema-valid Brand Contract is not automatically approved. The current contract preserves the five core palette values recorded as approved, while the overall contract remains PENDING because logo geometry/lockup, typography, licensing, and final asset acceptance remain unresolved. Production requiring DigitalNawa branding must not proceed as if the full identity were approved.
