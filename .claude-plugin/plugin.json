@@ -1,7 +1,7 @@
 {
   "name": "montry",
-  "description": "DigitalNawa Studio v1.3 - Repo is source of truth + Kinetic Rules + Correct Arabic name ديجيتال نواة. Brand, hooks, cutting, motion, QC.",
-  "version": "1.3.0",
+  "description": "DigitalNawa Studio — coordinated specialist skills for branded video planning, Remotion production, and evidence-based QC.",
+  "version": "1.4.0",
   "author": {
     "name": "DigitalNawa"
   },
@@ -11,6 +11,7 @@
     "./skills/hook-analyzer",
     "./skills/cut-editor",
     "./skills/motion-builder",
-    "./skills/qc-checker"
+    "./skills/qc-checker",
+    "./skills/remotion-engine"
   ]
 }

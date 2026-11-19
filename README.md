@@ -1,55 +1,91 @@
-# agent-skills-montry - DigitalNawa Studio
+# DigitalNawa Studio
 
-نظام Skills كامل لاستوديو DigitalNawa. 6 مهارات مترابطة، تم بناؤها وفحصها بدون أخطاء.
+مستودع Plugin لاستوديو إنتاج فيديو يعتمد مهارات متخصصة وعقود بيانات قابلة للتحقق، مع Remotion كمحرك الإنتاج الأساسي.
 
-## التثبيت - 30 ثانية
+> **حالة الهوية:** قيم الألوان الأساسية الخمسة موثقة كقرارات معتمدة في DN-DEC-006. أما اعتماد الهوية الكاملة فما زال معلقاً بسبب عدم اعتماد الشعار النهائي والخطوط وملف الأصول النهائي.
 
-### على Claude Code (الأفضل):
-cp -r agent-skills-montry/* ~/.claude/skills/
-تحقق:
-ls ~/.claude/skills/montry
-ls ~/.claude/skills/brand-digitalnawa
+## المكونات
 
-### على Windows:
-C:\Users\اسمك\.claude\skills\montry\
-C:\Users\اسمك\.claude\skills\brand-digitalnawa\
-انسخ كل مجلد بنفس الاسم
+- `montry`: تنسيق سير العمل وتحديد المهارات المطلوبة.
+- `brand-digitalnawa`: التحقق من مصدر الهوية وإعداد Brand Contract.
+- `hook-analyzer`: تحليل الافتتاحية عند الحاجة السردية.
+- `cut-editor`: إعداد قرارات القص من المواد الخام.
+- `motion-builder`: إعداد Production Plan.
+- `remotion-engine`: معاينة وتنفيذ خطة الإنتاج باستخدام Remotion.
+- `qc-checker`: فحص قائم على الأدلة.
+- `contracts/`: سبعة JSON Schemas للعقود بين المراحل.
+- `shared/brand/brand-contract.json`: سجل هوية قابل للتتبع؛ حالته الحالية PENDING وليست اعتماداً نهائياً للهوية.
 
-### على Antigravity:
-افتح Antigravity > Skills > Import > اختر مجلد agent-skills-montry
+## تثبيت Claude Code
 
-## طريقة الاستخدام
+### تشغيل المستودع كـ Plugin محلياً
 
-اكتب فقط:
-اعملي فيديو شعار DigitalNawa 9 ثواني
-سيقوم montry باستدعاء باقي المهارات بالترتيب الصحيح.
+من داخل مجلد المستودع نفسه:
 
-## الترتيب الصحيح
+```bash
+claude --plugin-dir .
+```
 
-1. montry (المنسق) - دائما أولا
-2. brand-digitalnawa (الهوية) - إجباري قبل أي عمل
-3. hook-analyzer (للفيديوهات أكبر من 15 ثانية)
-4. motion-builder (التنفيذ)
-5. cut-editor (للقص والاختصار)
-6. qc-checker (المراجعة النهائية) - إجباري قبل التسليم
+هذا أسلوب تطوير محلي؛ اتبع واجهة Plugin Manager في Claude Code للتثبيت الدائم.
 
-## اختبار سريع - بدون أخطاء
+### تثبيت المهارات يدوياً
 
-اكتب في Claude Code:
-استخدم سكيل montry واعملي فيديو شعار DigitalNawa 9 ثواني، واسحب الشعار من GitHub
+إذا كنت تريد تثبيت المهارات بدلاً من Plugin، انسخ المجلدات الموجودة داخل `skills/` فقط:
 
-إذا طلب منك الشعار، هذا صحيح - معناه أن Skill يمنع التخمين. ارفع له ملف الشعار PNG.
+```bash
+mkdir -p ~/.claude/skills
+cp -R skills/* ~/.claude/skills/
+```
 
-## الملفات
-- montry/SKILL.md - المنسق
-- brand-digitalnawa/SKILL.md - الهوية
-- hook-analyzer/SKILL.md - الافتتاحيات
-- cut-editor/SKILL.md - القص
-- motion-builder/SKILL.md - التنفيذ
-- qc-checker/SKILL.md - الجودة
+لا تنسخ مجلدات الجذر القديمة؛ مصدر المهارات النشط هو `skills/`.
 
-## ضمان عدم وجود أخطاء
+### Windows PowerShell
 
-- كل ملف SKILL.md يبدأ بـ frontmatter صحيح name + description
-- كل Skill يمنع التخمين: إذا نقص الشعار أو اللون، يتوقف ويسألك بدل أن يخترع
-- ترتيب التنفيذ ثابت: Brand أولا، QC أخيرا، لا يمكن تخطيه
+```powershell
+$target = Join-Path $HOME ".claude\skills"
+New-Item -ItemType Directory -Force -Path $target | Out-Null
+Copy-Item -Path ".\skills\*" -Destination $target -Recurse -Force
+```
+
+### Antigravity
+
+لم يتم إثبات التوافق مع Antigravity في اختبار تثبيت فعلي حتى الآن. لا تعتبر تعليمات الاستيراد القديمة ضماناً للتوافق.
+
+## سير العمل
+
+1. استلام الطلب وإنشاء Creative Brief.
+2. التحقق من Brand Contract عند استخدام هوية DigitalNawa.
+3. تحليل Hook إذا احتاجت القصة إلى افتتاحية مخصصة.
+4. إعداد Story Plan.
+5. استخدام Cut Editor فقط عند وجود مواد خام تحتاج إلى قص.
+6. إعداد Production Plan.
+7. تنفيذ المعاينة عبر Remotion Engine.
+8. فحص QC مع أدلة.
+9. تنفيذ الرندر النهائي عند طلب التصدير صراحة.
+10. إنشاء Delivery Manifest.
+
+## التحقق من العقود
+
+يتطلب Python 3.12 وبيئة التطوير:
+
+```bash
+python -m pip install -r requirements-dev.txt
+python scripts/validate_contracts.py
+python scripts/validate_plugin.py
+python -m unittest discover -s tests -v
+```
+
+## حدود الضمان
+
+- JSON Schema يتحقق من بنية البيانات، ولا يثبت صحة محتواها أو حدوث التنفيذ.
+- مهارات Claude لا توفر وحدها Runtime يفرض انتقالات المراحل آلياً.
+- لا يُسمح بـ QC PASS دون دليل.
+- الشعار النهائي والخطوط واعتماد حزمة الأصول ما زالت غير محسومة.
+- يجب التحقق من شروط ترخيص Remotion قبل الاستخدام التجاري أو الرندر المؤتمت.
+- لا تُضمّن مفاتيح API أو أسراراً في المستودع.
+
+## مصدر الحقيقة
+
+المهارات النشطة موجودة في `skills/`. مجلدات المهارات المكررة في جذر المستودع إرث قديم ولن تُحذف ضمن هذه الخطوة؛ تزال فقط بعد خطة ترحيل واختبار توافق مستقلة.
+
+تفاصيل مصدر الهوية وحالة كل عنصر موثقة في [Brand Source Evidence](docs/brand/source-evidence.md).

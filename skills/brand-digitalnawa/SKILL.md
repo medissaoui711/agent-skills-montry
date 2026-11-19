@@ -1,98 +1,49 @@
 ---
 name: brand-digitalnawa
-description: DigitalNawa brand source of truth. Use FIRST for any DigitalNawa video. Loads logo, colors, fonts, and motion identity from GitHub repo. Never guess brand assets.
+description: Resolve and verify the official DigitalNawa brand identity from its source repository. Use before any production that claims DigitalNawa branding. Never infer missing assets or tokens.
 ---
 
-# Brand - DigitalNawa
+# Brand — DigitalNawa
 
-## 0. REPO - مصدر الحقيقة الوحيد - اقرأه قبل أي شيء
+## Purpose
 
-- Repo URL: https://github.com/medissaoui711/DigitalNawa-Brand-Project
-- ممنوع تخمين أي لون أو شعار أو خط. إذا لم تجده في المستودع، توقف واسأل المستخدم.
-- Logo source ONLY: DigitalNawa/03-Logo-Assets في المستودع.
-- Background المعتمد لهذه السلسلة (Logo + Reels): #FEF3C7 (من المستودع - Light)
-- Background الداكن #050810 يستعمل فقط إذا طلب المستخدم صراحة نسخة داكنة. لا تستعمله افتراضيا.
+This skill is the identity resolver. It does not invent or redesign the brand. It reads the owner-designated source and produces a Brand Contract that other skills consume.
 
+## Official source candidate
 
-## 0.1 CORRECTION - الاسم العربي الرسمي - لا تغيره أبدا
+- Repository: https://github.com/medissaoui711/DigitalNawa-Brand-Project
+- Previously designated logo location: `DigitalNawa/03-Logo-Assets`
 
-- الاسم العربي الصحيح: ديجيتال نواة
-- التهجئة حرفا حرفا: د - ي - ج - ي - ت - ا - ل - ن - و - ا - ة
-- ممنوع كتابة "ديجيتال نوى" بدون تاء مربوطة. "نوى" خطأ.
-- الاسم الإنجليزي: DigitalNawa
-- إذا رأيت "نوى" في أي مكان في السكيل، اعتبرها خطأ وصححها إلى "نواة".
+The repository path and assets must be checked at the current revision. If the repository or expected path cannot be inspected, report WAITING_FOR_INPUT and ask the owner for the authoritative source or files.
 
-## 1. Source of Truth (Do Not Guess)
+## Required verification
 
-- Repo: https://github.com/medissaoui711/DigitalNawa-Brand-Project
-- Logo source ONLY: DigitalNawa/03-Logo-Assets
-- If logo file is not found in repo, STOP and ask user to upload logo PNG/SVG. Do NOT generate a similar logo with AI.
+1. Record the repository URL, ref/commit, and exact asset paths.
+2. Inspect the original logo files and their formats.
+3. Locate authoritative color tokens and record exact values and source references.
+4. Locate typography declarations and verify font availability and usage rights.
+5. Identify motion, intro, outro, and layout rules only when they are explicitly documented.
+6. Record conflicting or obsolete instructions as LEGACY or UNVERIFIED; do not silently choose between them.
+7. Prepare `contracts/brand.schema.json` output.
 
-## 2. Visual Identity - DEPRECATED - لا تستعمله. استعمل القسم 0 فقط.
+## Approval policy
 
-> هذا القسم قديم وملغي. القسم 0 + المستودع هو المرجع الوحيد. لا تستعمل #050810 ولا #00FF9D ولا #FFC800 ولا Space Grotesk لهذه السلسلة.
+- Initial status is `UNVERIFIED`.
+- Use `PENDING` when the source has been inspected but owner confirmation is required.
+- Use `APPROVED` only after the authoritative assets and tokens have been verified and the owner has approved the Brand Contract.
+- Use `REJECTED` when the owner rejects the proposed identity data.
+- A schema-valid Brand Contract is not automatically an approved brand.
 
-## 2. Visual Identity (OLD - DO NOT USE)
+## Official naming
 
-- Background: #050810 (dark blue-black)
-- Grid: Subtle dot grid, opacity 8%
-- Danger / Problem: #FF3B3B
-- Solution / Success: #00FF9D
-- Info: #00D4FF
-- Warning / CTA: #FFC800
-- Text Primary: #FFFFFF
-- Text Secondary: #A8B0C0
-- Font English: Space Grotesk Bold / Inter ExtraBold
-- Font Arabic: Cairo Black / Tajawal ExtraBold
-- On-screen text: Max 5 words per screen, kinetic typography, word by word.
+- English name: DigitalNawa
+- Arabic name: ديجيتال نواة
+- The spelling "ديجيتال نوى" is incorrect.
 
-## 3. Motion Identity - MANDATORY
+## Legacy conflict handling
 
-- Easing for ALL animations: cubic-bezier(0.22, 1, 0.36, 1)
-- Max scene duration: 3.5 seconds. Cut, zoom 105%, or new element every 3.5s.
-- No Linear easing. No Bounce easing.
+Older skill copies contain conflicting palettes, backgrounds, typography, and mandatory motion sequences. Treat all such embedded values as LEGACY / UNVERIFIED until checked against the official source. Do not apply them to production by memory.
 
-Sequence for EVERY video:
-1. START: Rising Pixels - 24 pixels rise from bottom, Stagger 0.04s, Opacity 0 -> 100%
-2. ASSEMBLY: Pixels assemble into original logo
-3. REVEAL: ديجيتال نواة -> morph to DigitalNawa (same weight, smooth)
-4. END: Slogan lockup Build. -> Innovate. -> Teach. word by word, Scale 95% -> 100% each word, Hold 0.8s, Fade Out
+## Failure behavior
 
-## 4. Logo Video Spec (Pilot 9s)
-
-- Duration: 9.0 seconds, 60fps
-- Exports: 1080x1920 (Reels), 1080x1080 (Post), 1920x1080 (YouTube)
-- Timeline:
-  - 0.0-2.0s Rising Pixels
-  - 2.0-3.5s Assembly to Logo
-  - 3.5-5.5s Name Reveal Arabic -> English
-  - 5.5-8.0s Slogan Build. Innovate. Teach.
-  - 8.0-9.0s Hold + Fade Out
-- Audio: Light whoosh + ding only. No loud music.
-
-## 5. Failure Rules
-
-- If Arabic text ديجيتال نواة is distorted, REJECT and fix font. Arabic letters must be perfect.
-- If logo differs from repo file by even 1%, REJECT.
-- If colors differ, REJECT and re-read repo.
-
-
----
-
-## KINETIC RULES - اقرأ المستودع أولا
-
-- قبل أن تبني أي فيديو، افتح المستودع https://github.com/medissaoui711/DigitalNawa-Brand-Project وتأكد من الشعار والألوان والخطوط منه، وليس من ذاكرتك.
-
-## KINETIC RULES - إجباري لكل فيديو
-
-هذه القواعد فوق أي برومبت. إذا تعارض البرومبت معها، طبّق هذه القواعد.
-
-- ممنوع أي شاشة ثابتة أكثر من 1.5 ثانية بدون حركة.
-- كل جملة تُقسّم إلى كلمات. كل كلمة تظهر لوحدها في زمنها (0.4 ثانية لكل كلمة) مع Pop صغير، وليست الجملة كاملة دفعة واحدة.
-- النص العربي: RTL كامل، حروف متصلة، لا تكسر الجملة إلا بعد فعل أو اسم كامل. ممنوع كسر السطر في منتصف المعنى.
-- العمودي 1080x1920: المحتوى يملأ من Y=20% إلى Y=80%. ممنوع فراغ أكثر من 20% فوق أو تحت. الكلمة الرئيسية في المنتصف Y=45% بحجم 180px على الأقل.
-- كل 0.5 ثانية يجب أن يحدث شيء: بكسل يتحرك، كلمة تكبر، لون يتغير، عمود يصعد.
-- مشهد Load: الأعمدة تصعد عموداً عموداً، ليس دفعة واحدة.
-- مشهد Stress: البكسلات تهتز / ترتجف.
-- مشهد Spike: عمود واحد يقفز فجأة من القاعدة.
-- ممنوع شرائح PowerPoint: إذا كانت الشاشة ثابتة، فهي خطأ ويجب إعادة بنائها.
+If the logo, palette, font, source revision, or license evidence is missing, state exactly what is missing and block only the brand-dependent production. Never generate a substitute logo or claim a match that was not inspected.

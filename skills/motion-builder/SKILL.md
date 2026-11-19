@@ -1,49 +1,43 @@
 ---
 name: motion-builder
-description: Use for building and rendering DigitalNawa motion graphics with code. Uses Remotion / Hyperframes / motion-copy. Must be used after brand-digitalnawa. Never generate logo with AI.
+description: Convert an approved Story Plan and optional Edit Decision List into a structured Remotion Production Plan. Does not own brand identity or final QC.
 ---
 
-# Motion Builder - Code-Based Studio
+# Motion Builder — Production Planner
 
-## Stack
+## Responsibility
 
-- Primary: Hyperframes (npx hyperframes) + HTML/CSS/JS - For logo, Reels, infographics.
-- Alternative: Remotion (React) - For complex data visualizations.
-- Reference: motion-copy skill - For copying reference video frame by frame (inspiration only, never copy voice / name / brand of others).
+Translate approved creative and editorial artifacts into a deterministic Production Plan. Remotion Engine performs execution. This skill does not independently select a rendering framework or claim that a render exists.
 
-## Setup Check (Run First)
+## Required inputs
 
-Run in terminal:
-node --version
-npx hyperframes --help
-ffmpeg -version
+- Valid Story Plan.
+- Valid Edit Decision List when supplied footage requires editing.
+- Approved Brand Contract when DigitalNawa identity is requested.
+- Asset inventory with source paths and usage-rights status.
+- Target dimensions, frame rate, and delivery format from the Creative Brief or user.
 
-If any command fails, install it first and confirm with --help. Do NOT proceed to build without passing setup check.
+If required inputs are missing, stop and identify them.
 
-## Build Workflow
+## Planning workflow
 
-1. Read brand-digitalnawa SKILL.md - Get exact colors, fonts, easing, motion sequence.
-2. Read reference video if provided - Cut it every 0.1s, list every movement / zoom.
-3. Build in code - Use ONLY brand tokens. No hardcoded colors outside brand.
-4. Render test at low res - 540x960, 30fps, check Arabic text and logo.
-5. Compare - Put render next to reference / original logo, fix any difference. Report differences with timestamps.
-6. Final render - 1080x1920, 1080x1080, 1920x1080, 60fps for publishing, 30fps if file too large.
+1. Resolve the composition dimensions, frame rate, and duration in frames.
+2. Map each Story Plan scene to a composition scene and frame interval.
+3. Reference assets by stable IDs; do not embed secrets or invent missing media.
+4. Define transitions, animation timing, typography, and audio decisions.
+5. Consume brand tokens from the approved Brand Contract only. Do not hardcode palette or font values.
+6. Record unknown assets, fonts, rights, and technical assumptions as UNVERIFIED.
+7. Produce data compatible with `contracts/production-plan.schema.json`.
 
-## Code Rules
+## Remotion conventions
 
-- Easing: cubic-bezier(0.22, 1, 0.36, 1) everywhere.
-- Kinetic Typography: Word by word, not whole sentence at once.
-- Highlight box: Red #FF3B3B for problem, Green #00FF9D for solution, Blue #00D4FF for info, Yellow #FFC800 for CTA.
-- Text must not cover face / important element. Safe area: Top 15% for headline, Bottom 18% reserved for HUD if used.
-- Arabic text: Use Cairo Black, test rendering. If letters disconnect, stop and fix font loading.
+- Remotion is the primary execution engine.
+- Keep project dependencies pinned to a compatible version set.
+- Use frame-based timing and deterministic composition inputs.
+- Prefer reusable components and data-driven scene definitions.
+- Prepare preview before final rendering.
+- Final render requires an explicit export request from the user.
 
-## Common Errors - Fix Before Asking User
+## Handoff
 
-- Arabic letters disconnected -> Font not loaded. Add @font-face with Cairo Black.
-- Logo blurry -> Use SVG / high-res PNG from repo, not AI-generated.
-- Colors look off -> Re-read brand-digitalnawa, check hex codes.
-- Animation too fast / jittery -> Check easing, must be cubic-bezier above, duration min 0.4s.
-
-## Delivery
-
-Provide: Rendered file paths for 3 sizes, Timeline used, Any deviation from brand and why.
+Pass the Production Plan and referenced artifacts to `remotion-engine`. Do not self-certify render success or QC status.

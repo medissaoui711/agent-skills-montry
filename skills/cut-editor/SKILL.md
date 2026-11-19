@@ -1,37 +1,48 @@
 ---
 name: cut-editor
-description: Use for trimming, cutting fluff, extracting Reels from long videos, and creating seamless loops. Works on transcript / timestamps / raw footage list. Must be used after brand-digitalnawa.
+description: Prepare evidence-based edit decisions for supplied footage, including trimming, clip extraction, and loop planning. Produces an Edit Decision List; does not claim to execute edits.
 ---
 
 # Cut Editor
 
-## Task 1: Trim Fluff (Keep Natural Style)
+## Scope
 
-Find and propose cuts for: False starts, Repeated intro, Off-topic tangents, Explanations after idea is clear, Filler words.
+Use only when the user supplies raw footage, a transcript, timestamps, or a media inventory that needs editing. This skill plans edits and produces an Edit Decision List (EDL). It does not render.
 
-For each cut provide:
-1. Exact words to delete (verbatim)
-2. Last words BEFORE cut
-3. First words AFTER cut
-4. Cover Shot needed? Yes/No - if Yes, suggest B-roll / logo / infographic
-5. Time saved
+## Required source data
 
-Rules: Keep pauses that help understanding or joke timing. Keep speaker natural style. Never delete part that changes meaning. Warn if cut makes claim stronger than originally said. End with total time saved.
+Record the source media identifier, URI or path, duration, and timebase (FPS). Use transcript timestamps or inspected media evidence. Never invent timestamps.
 
-## Task 2: Extract Reels from Long Video
+## Trim decisions
 
-Input: Long video transcript with timestamps + target audience.
-Extract best 3 clips, each 20-45s. Each clip must have: Hook understandable without original context, One clear idea, Result before end.
+Identify false starts, repeated introductions, off-topic sections, redundant explanations, and filler only when removal preserves meaning.
 
-For each clip provide: Start timestamp + End timestamp, Opening line (verbatim), Closing line (verbatim), Middle parts to delete, On-screen text to add if context missing.
-Rank clips by: Idea strength + Result + Standalone ability. Recommend which to edit first and why.
+For every proposed cut record:
+- source media ID
+- exact in-frame and out-frame
+- preceding and following spoken words when a transcript exists
+- reason for the cut
+- cover-shot requirement
+- expected time saved
+- confidence or evidence limitation
 
-## Task 3: Seamless Loop (Reels)
+Keep pauses that support comprehension, tone, or humour. Warn when a cut could strengthen or distort a claim.
 
-Goal: End connects to Start smoothly.
-Create 2 methods:
-1. Visual Loop: Repeat movement / angle / object position in last frame and first frame.
-2. Audio Loop: Sound / sentence continues across cut point.
+## Clip extraction
 
-For each method provide: Last frame description, First frame description, Exact cut point (timestamp), Audio to continue across cut.
-Check: Play 3 times in a row, transition must feel invisible. Do NOT sacrifice climax to make loop.
+Extract candidate clips only when each can stand alone with a clear idea and adequate context. Record exact frame ranges and explain any context that must be added.
+
+## Loop planning
+
+Propose visual and/or audio loop points only when the source supports them. Do not sacrifice the story's conclusion merely to create a loop.
+
+## Output
+
+Produce `contracts/edit-decision-list.schema.json` compatible data. Validate that:
+- each segment references an existing source media ID;
+- `out_frame` is greater than `in_frame`;
+- the range does not exceed the known source duration;
+- timeline positions are non-negative;
+- the timebase is explicit.
+
+If a condition cannot be verified, mark it NOT_VERIFIED and do not claim the EDL is ready for execution.

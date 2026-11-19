@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://digitalnawa.dev/schemas/story-plan.schema.json",
+  "title": "DigitalNawa Story Plan",
+  "type": "object",
+  "$defs": {
+    "base": {
+      "type": "object",
+      "properties": {
+        "contract_version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "project_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "producer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "in_review",
+            "approved",
+            "rejected",
+            "superseded"
+          ]
+        },
+        "source_artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "artifact_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "contract": {
+                "type": "string",
+                "minLength": 1
+              },
+              "version": {
+                "type": "string",
+                "pattern": "^\\d+\\.\\d+\\.\\d+$"
+              }
+            },
+            "required": [
+              "artifact_id",
+              "contract",
+              "version"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "validation": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "PASS",
+                "FAIL",
+                "NOT_VERIFIED",
+                "BLOCKED"
+              ]
+            },
+            "issues": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string"
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "severity": {
+                    "type": "string",
+                    "enum": [
+                      "error",
+                      "warning",
+                      "info"
+                    ]
+                  }
+                },
+                "required": [
+                  "code",
+                  "message",
+                  "severity"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "status",
+            "issues"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "contract_version",
+        "project_id",
+        "artifact_id",
+        "created_at",
+        "producer",
+        "status",
+        "source_artifacts",
+        "validation"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "#/$defs/base"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "narrative_structure": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scenes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "scene_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "order": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "duration_seconds": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "purpose": {
+                "type": "string"
+              },
+              "visual_direction": {
+                "type": "string"
+              },
+              "voiceover": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "on_screen_text": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "transition_intent": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "required_assets": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "scene_id",
+              "order",
+              "duration_seconds",
+              "purpose",
+              "visual_direction",
+              "voiceover",
+              "on_screen_text",
+              "transition_intent",
+              "required_assets"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "call_to_action": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "narrative_structure",
+        "scenes",
+        "call_to_action"
+      ]
+    }
+  ],
+  "unevaluatedProperties": false
+}
