@@ -32,10 +32,10 @@ Remotion is the primary video execution engine. Hyperframes is not part of the d
 
 ## Open gates
 
-- **Brand gate:** verify the original DigitalNawa assets, colors, fonts, and their sources before approving a Brand Contract.
+- **Brand gate:** the five core palette values are recorded as approved in DN-DEC-006 and preserved in the draft Brand Contract. Final logo lockup/geometry, typography, font licensing, final asset-manifest acceptance, and functional semantic colors remain unresolved. The overall Brand Contract remains PENDING.
 - **License gate:** verify Remotion license applicability for the owner's team size, business model, and automated rendering use before commercial operation.
 - **Runtime gate:** JSON contracts and skill instructions do not themselves guarantee orchestration enforcement. Any runtime automation must be separately designed, tested, and documented.
 
 ## Repository layout
 
-See the root tree and `contracts/README.md`. The intended separation is skills, contracts, shared brand data, validation scripts, tests, and documentation.
+See the root tree, `contracts/README.md`, and `docs/brand/source-evidence.md`. The intended separation is skills, contracts, shared brand data, validation scripts, tests, and documentation.
