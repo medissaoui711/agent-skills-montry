@@ -71,6 +71,8 @@ Copy-Item -Path ".\skills\*" -Destination $target -Recurse -Force
 ```bash
 python -m pip install -r requirements-dev.txt
 python scripts/validate_contracts.py
+python scripts/validate_plugin.py
+python -m unittest discover -s tests -v
 ```
 
 ## حدود الضمان
