@@ -1,0 +1,36 @@
+{
+  "contract_version": "1.0.0",
+  "project_id": "integration-fixture-project",
+  "artifact_id": "story-001",
+  "created_at": "2026-11-19T08:01:00Z",
+  "producer": "creative-planning",
+  "status": "approved",
+  "source_artifacts": [
+    {
+      "artifact_id": "brief-001",
+      "contract": "creative-brief",
+      "version": "1.0.0"
+    }
+  ],
+  "validation": {
+    "status": "PASS",
+    "issues": []
+  },
+  "narrative_structure": "One-scene synthetic fixture",
+  "scenes": [
+    {
+      "scene_id": "scene-001",
+      "order": 0,
+      "duration_seconds": 1,
+      "purpose": "Exercise schema and workflow links",
+      "visual_direction": "Plain test slate",
+      "voiceover": null,
+      "on_screen_text": [
+        "TEST FIXTURE — NOT A REAL DELIVERABLE"
+      ],
+      "transition_intent": null,
+      "required_assets": []
+    }
+  ],
+  "call_to_action": null
+}

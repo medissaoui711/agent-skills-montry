@@ -1,0 +1,49 @@
+{
+  "contract_version": "1.0.0",
+  "project_id": "integration-fixture-project",
+  "artifact_id": "production-001",
+  "created_at": "2026-11-19T08:03:00Z",
+  "producer": "motion-builder",
+  "status": "approved",
+  "source_artifacts": [
+    {
+      "artifact_id": "story-001",
+      "contract": "story-plan",
+      "version": "1.0.0"
+    },
+    {
+      "artifact_id": "edl-001",
+      "contract": "edit-decision-list",
+      "version": "1.0.0"
+    }
+  ],
+  "validation": {
+    "status": "PASS",
+    "issues": []
+  },
+  "composition_id": "DigitalNawaIntegrationSmoke",
+  "video": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_frames": 30
+  },
+  "scenes": [
+    {
+      "scene_id": "scene-001",
+      "from": 0,
+      "duration_frames": 30,
+      "component": "TestSlate",
+      "props": {
+        "label": "TEST ONLY"
+      },
+      "asset_ids": []
+    }
+  ],
+  "assets": [],
+  "audio_tracks": [],
+  "render_profile": {
+    "codec": "h264",
+    "quality": "preview"
+  }
+}

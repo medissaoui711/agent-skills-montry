@@ -1,0 +1,46 @@
+{
+  "contract_version": "1.0.0",
+  "project_id": "integration-fixture-project",
+  "artifact_id": "edl-001",
+  "created_at": "2026-11-19T08:02:00Z",
+  "producer": "cut-editor",
+  "status": "approved",
+  "source_artifacts": [
+    {
+      "artifact_id": "brief-001",
+      "contract": "creative-brief",
+      "version": "1.0.0"
+    }
+  ],
+  "validation": {
+    "status": "PASS",
+    "issues": []
+  },
+  "timebase": {
+    "fps": 30,
+    "unit": "frames"
+  },
+  "source_media": [
+    {
+      "media_id": "media-001",
+      "uri": "https://example.invalid/source.mp4",
+      "duration_frames": 30,
+      "transcript_ref": null
+    }
+  ],
+  "segments": [
+    {
+      "segment_id": "segment-001",
+      "media_id": "media-001",
+      "in_frame": 0,
+      "out_frame": 30,
+      "timeline_start_frame": 0,
+      "reason": "Synthetic integration fixture",
+      "audio_decision": "retain",
+      "transition": null
+    }
+  ],
+  "notes": [
+    "Synthetic fixture only; no source media is provided."
+  ]
+}

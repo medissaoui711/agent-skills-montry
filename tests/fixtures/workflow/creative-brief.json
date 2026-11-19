@@ -1,0 +1,25 @@
+{
+  "contract_version": "1.0.0",
+  "project_id": "integration-fixture-project",
+  "artifact_id": "brief-001",
+  "created_at": "2026-11-19T08:00:00Z",
+  "producer": "montry",
+  "status": "approved",
+  "source_artifacts": [],
+  "validation": {
+    "status": "PASS",
+    "issues": []
+  },
+  "objective": "Synthetic workflow integration test",
+  "audience": "Test readers",
+  "platform": "Internal CI",
+  "format": "vertical",
+  "duration_target_seconds": 1,
+  "language": [
+    "en"
+  ],
+  "tone": "neutral",
+  "call_to_action": null,
+  "content_constraints": [],
+  "reference_materials": []
+}
